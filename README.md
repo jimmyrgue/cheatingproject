@@ -1,26 +1,13 @@
-# typoer
-Types text with typos and correction
+# What's this
+It's a webserver which runs locally on your network using Flask to types text with typos and correction onto your computer.
 
-![demo](demo.gif)
 
-# Installation
+# Why would I use this?
 
-1. Download `typoer.py` and `requirements.txt`
-2. ```pip install -r requirements```
-3. In your file add `from typoer import typoer`
+If your school has a annoying anticheat solution which invades privacy (**HONORLOCK! >:(**), but you're still a terrible student and need to make it look like you're typing out a essay that ChatGBT wrote, just simply write the promp on your phone, submit it to the host computer using the web server, and press the wake key to start *typing*! 
 
-# Usage
+# MY CODE IS ASS
+so please help me make this better :D
 
-## Example
+## Doccumentation is in the files, anything else, you're on your own.
 
-```
-from typoer import typoer
-text = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-typoer(text, wpm = 120, accuracy = 0.8, wait_key = 'right')
-```
-
-This will type `text` at an average rate of 120WPM with an accuracy of 80%. Press the right arrow key to begin typing.
-
-# Documentation
-
-See `typoer.py`
