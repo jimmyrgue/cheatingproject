@@ -1,5 +1,7 @@
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template_string, redirect, url_for
 from typoer import typoer
+import threading
+
 app = Flask(__name__)
 
 # HTML template for the form
@@ -28,17 +30,16 @@ textMAIN = ""
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-
-
         text = request.form["text"]
-        typoer(text, wpm = 85, accuracy = 0.99, wait_key = 'right', break_key = 'left')
-
-        process_text(text)
-        return render_template_string(html_template)
+        threading.Thread(target=process_text, args=(text,)).start()
+        return redirect(url_for('index'))
     return render_template_string(html_template)
 
 def process_text(text):
+    global textMAIN
+    textMAIN = text
     print("Processing text:", text)
+    typoer(text, wpm=85, accuracy=0.99, wait_key='right', break_key='left')
 
 if __name__ == "__main__":
-    app.run(host="192.168.0.120", port=5000, debug=True)
+    app.run(host="192.168.0.205", port=5000, debug=True)
